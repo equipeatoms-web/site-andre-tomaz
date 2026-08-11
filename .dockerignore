@@ -6,5 +6,3 @@ video
 *.docx
 *.py
 _*.html
-servidor.js
-package.json

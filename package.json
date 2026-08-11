@@ -5,6 +5,7 @@
   "description": "Site estatico de uma pagina (EN + PT), gerado a partir de onepage/_fonte.html",
   "scripts": {
     "dev": "node servidor.js",
+    "start": "node servidor.js",
     "gerar": "python onepage/gerar.py && node publicar.js"
   }
 }
