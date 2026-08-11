@@ -49,7 +49,7 @@ O `andretomaz.com` está no ar hoje com o site antigo (título "Arquiteto de Sis
 Não edite `index.html` nem `pt/index.html`: eles são **gerados**. Edite `../onepage/_fonte.html` (inglês no HTML, português em `data-pt`) e rode:
 
 ```
-python gerar.py
+npm run gerar
 ```
 
-Isso reescreve as duas versões, já com title, description, hreflang e dados estruturados de cada idioma.
+Isso reescreve as duas versões, já com title, description, hreflang e dados estruturados de cada idioma, e copia o resultado para esta pasta. Depois, `git push` — o EasyPanel publica a partir da branch `main` (ver `../DEPLOY.md`).
