@@ -204,8 +204,10 @@ def gerar(idioma):
     h = h.replace('</head>', jsonld(idioma) + '\n</head>')
 
     # 4. seletor de idioma vira LINK de verdade (o Google segue link, não clique em JS)
+    #    O ?lang=en avisa o nginx que a escolha foi explícita: sem ele, quem tem o
+    #    navegador em português voltaria direto para /pt/ e nunca alcançaria o inglês.
     if pt:
-        seletor = ('<a class="idioma-op" href="../" hreflang="en" lang="en">EN</a>\n'
+        seletor = ('<a class="idioma-op" href="../?lang=en" hreflang="en" lang="en">EN</a>\n'
                    '  <span class="idioma-sep" aria-hidden="true">/</span>\n'
                    '  <span class="idioma-op ativo" aria-current="true">PT</span>')
     else:

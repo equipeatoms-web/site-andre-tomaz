@@ -24,9 +24,24 @@ const TIPOS = {
   '.mp4': 'video/mp4',
 };
 
+// Mesma regra do nginx.conf: portugues so conta quando vem primeiro na lista,
+// e o ?lang do seletor vence o navegador.
+const mandarParaPt = (caminho, busca, aceita) => {
+  if (caminho !== '/') return false;
+  const escolha = new URLSearchParams(busca).get('lang');
+  if (escolha === 'en' || escolha === 'pt') return escolha === 'pt';
+  return /^pt/i.test(aceita || '');
+};
+
 http
   .createServer((req, res) => {
-    const url = decodeURIComponent(req.url.split('?')[0]);
+    const [caminho, busca = ''] = req.url.split('?');
+    if (mandarParaPt(caminho, busca, req.headers['accept-language'])) {
+      res.writeHead(302, { Location: '/pt/', Vary: 'Accept-Language' }).end();
+      return;
+    }
+
+    const url = decodeURIComponent(caminho);
     let alvo = path.join(RAIZ, path.normalize(url).replace(/^(\.\.[/\\])+/, ''));
 
     // Fora da raiz: nao serve.
