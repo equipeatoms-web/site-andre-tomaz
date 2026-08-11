@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>André Tomaz · Consultor de Transformação Empresarial</title>
+<meta name="description" content="Ajudo empresas a organizar sua operação, estruturar processos e desenvolver soluções digitais sob medida para crescerem com mais eficiência.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   CONFIG DE IDENTIDADE
+   Na produção isto vira arquivo separado (multi-cliente).
+   ========================================================= */
+:root{
+  --obsidiana:#0F1014;
+  --obsidiana-2:#16171D;
+  --obsidiana-3:#1D1F26;
+  --linha:#2A2C35;
+  --texto:#E9E7E3;
+  --texto-2:#A8A8B0;
+  --texto-3:#75757F;
+  --ambar:#E89B3D;
+  --ambar-suave:rgba(232,155,61,.10);
+  --fonte-titulo:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  --fonte-corpo:'Inter',system-ui,-apple-system,sans-serif;
+  --max:1080px;
+  --gap-secao:clamp(72px,10vw,140px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--obsidiana);color:var(--texto);font-family:var(--fonte-corpo);
+  font-weight:300;font-size:clamp(16px,1.05vw,17.5px);line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(22px,5vw,40px)}
+section{padding:var(--gap-secao) 0;position:relative}
+
+h1,h2,h3{font-family:var(--fonte-titulo);font-weight:700;line-height:1.12;letter-spacing:-.02em}
+h1{font-size:clamp(30px,5vw,54px)}
+h2{font-size:clamp(26px,3.6vw,40px);margin-bottom:28px}
+h3{font-size:clamp(18px,1.6vw,21px);font-weight:500;letter-spacing:-.01em}
+.olho{font-family:var(--fonte-titulo);font-size:12px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ambar);margin-bottom:18px;display:block}
+.lead{font-size:clamp(17px,1.5vw,20px);color:var(--texto-2);max-width:60ch}
+p{max-width:64ch}
+strong{font-weight:600;color:var(--texto)}
+
+/* ================= HERO COM VÍDEO ================= */
+.hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 90px;
+  position:relative;overflow:hidden;isolation:isolate}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+/* placeholder enquanto o vídeo não existe */
+.hero-placeholder{position:absolute;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse at 70% 40%,rgba(232,155,61,.12),transparent 55%),
+    radial-gradient(ellipse at 25% 75%,rgba(44,59,77,.35),transparent 60%),
+    linear-gradient(140deg,#101116 0%,#1a1c24 50%,#0d0e12 100%);
+}
+.hero-placeholder::after{
+  content:'AQUI ENTRA O VÍDEO DE FUNDO';
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-4deg);
+  font-family:var(--fonte-titulo);font-size:clamp(13px,2vw,20px);letter-spacing:.22em;
+  color:rgba(232,155,61,.13);white-space:nowrap;
+}
+/* véu que garante leitura do texto sobre o vídeo */
+.hero-veu{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(15,16,20,.94) 0%,rgba(15,16,20,.86) 45%,rgba(15,16,20,.55) 100%)}
+@media (max-width:820px){
+  .hero-veu{background:linear-gradient(180deg,rgba(15,16,20,.82) 0%,rgba(15,16,20,.93) 55%)}
+}
+.hero-marca{position:absolute;top:36px;left:0;right:0;font-family:var(--fonte-titulo);
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--texto-3)}
+.hero h1{max-width:17ch;margin-bottom:30px}
+.hero h1 em{font-style:normal;color:var(--ambar)}
+.hero-sub{font-size:clamp(16px,1.4vw,18.5px);color:var(--texto-2);max-width:52ch;
+  margin-bottom:40px;font-weight:300}
+.hero-acoes{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+
+/* botão para abrir o depoimento com som */
+.play-depo{display:inline-flex;align-items:center;gap:13px;background:none;border:none;
+  color:var(--texto-2);font-family:var(--fonte-corpo);font-size:14.5px;cursor:pointer;
+  padding:0;transition:color .2s ease}
+.play-depo:hover{color:var(--texto)}
+.play-icone{width:38px;height:38px;border:1px solid var(--ambar);border-radius:50%;
+  display:grid;place-items:center;flex-shrink:0;transition:background .2s ease}
+.play-depo:hover .play-icone{background:var(--ambar-suave)}
+.play-icone::after{content:'';border-left:8px solid var(--ambar);border-top:5px solid transparent;
+  border-bottom:5px solid transparent;margin-left:3px}
+.scroll-dica{position:absolute;bottom:38px;left:0;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--texto-3);display:flex;align-items:center;gap:10px}
+.scroll-dica::after{content:'';width:38px;height:1px;background:var(--texto-3)}
+
+/* ================= BOTÕES ================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  background:var(--ambar);color:#141414;font-family:var(--fonte-titulo);font-weight:500;
+  font-size:15px;padding:17px 32px;border:none;border-radius:2px;cursor:pointer;
+  text-decoration:none;transition:transform .2s ease,box-shadow .2s ease;width:100%}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(232,155,61,.22)}
+.btn-fantasma{display:inline-flex;align-items:center;gap:11px;color:var(--texto);
+  text-decoration:none;font-family:var(--fonte-titulo);font-size:15px;
+  border-bottom:1px solid var(--ambar);padding-bottom:5px;transition:gap .2s ease}
+.btn-fantasma:hover{gap:18px}
+
+/* ================= ESPELHO ================= */
+.espelho{background:var(--obsidiana-2)}
+.sintomas{list-style:none;margin-top:44px;max-width:74ch}
+.sintomas li{padding:22px 0 22px 34px;border-top:1px solid var(--linha);position:relative;
+  color:var(--texto-2);font-size:clamp(16px,1.25vw,18px)}
+.sintomas li:last-child{border-bottom:1px solid var(--linha)}
+.sintomas li::before{content:'';position:absolute;left:0;top:32px;width:14px;height:1px;background:var(--ambar)}
+.remate{margin-top:44px;font-size:clamp(18px,1.9vw,25px);font-family:var(--fonte-titulo);
+  font-weight:500;line-height:1.4;max-width:24ch}
+
+/* ================= CONTRASTE ================= */
+.contraste{margin-top:56px;border-left:2px solid var(--ambar);padding:6px 0 6px 28px;display:grid;gap:9px}
+.contraste p{font-family:var(--fonte-titulo);font-size:clamp(17px,1.6vw,21px);color:var(--texto-2);
+  font-weight:400;max-width:none}
+.contraste p:last-child{color:var(--texto);font-weight:500}
+
+/* ================= MÉTODO ================= */
+.metodo{background:var(--obsidiana-2)}
+.etapas{margin-top:52px}
+.etapa{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:24px 0;
+  border-top:1px solid var(--linha);align-items:baseline}
+.etapa:last-child{border-bottom:1px solid var(--linha)}
+.etapa-num{font-family:var(--fonte-titulo);font-size:26px;font-weight:700;color:var(--ambar);
+  opacity:.75;line-height:1}
+.etapa-corpo h3{margin-bottom:7px}
+.etapa-corpo p{color:var(--texto-2);font-size:15.5px;max-width:58ch}
+.etapa.destaque{background:linear-gradient(90deg,var(--ambar-suave),transparent);
+  margin-left:-16px;padding-left:16px}
+.nota-metodo{margin-top:34px;font-size:15px;color:var(--texto-3);border-left:1px solid var(--linha);
+  padding-left:20px;max-width:56ch}
+
+/* ================= GRADE ================= */
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;
+  background:var(--linha);margin-top:52px;border:1px solid var(--linha)}
+.card{background:var(--obsidiana);padding:34px 30px;transition:background .25s ease}
+.card:hover{background:var(--obsidiana-3)}
+.card h3{margin-bottom:12px}
+.card p{color:var(--texto-2);font-size:15.5px}
+.card-marca{color:var(--ambar);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  font-family:var(--fonte-titulo);display:block;margin-bottom:14px}
+
+/* ================= CASE ================= */
+.case{background:var(--obsidiana-2)}
+.case-local{color:var(--ambar);font-family:var(--fonte-titulo);font-size:13px;
+  letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:10px}
+.case-antes{font-size:clamp(18px,1.9vw,24px);font-family:var(--fonte-titulo);font-weight:400;
+  line-height:1.45;color:var(--texto);max-width:34ch;margin-bottom:38px}
+.entregas{list-style:none;display:grid;gap:1px;background:var(--linha);
+  border:1px solid var(--linha);margin:40px 0}
+.entregas li{background:var(--obsidiana-2);padding:26px 30px;display:grid;
+  grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.entregas .marcador{color:var(--ambar);font-family:var(--fonte-titulo);font-size:14px;padding-top:3px}
+.entregas strong{display:block;margin-bottom:5px;font-weight:600}
+.entregas span.d{color:var(--texto-2);font-size:15.5px}
+.case-fecho{font-family:var(--fonte-titulo);font-size:clamp(17px,1.7vw,22px);font-weight:500;
+  line-height:1.45;max-width:36ch;color:var(--texto)}
+
+/* ================= PARA QUEM ================= */
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px}
+.duas h3{margin-bottom:22px;font-size:19px}
+.duas ul{list-style:none;display:grid;gap:16px}
+.duas li{padding-left:26px;position:relative;color:var(--texto-2);font-size:16px}
+.sim li::before{content:'';position:absolute;left:0;top:11px;width:12px;height:1px;background:var(--ambar)}
+.nao li::before{content:'';position:absolute;left:0;top:11px;width:12px;height:1px;background:var(--texto-3)}
+.nao h3{color:var(--texto-3)}
+
+/* ================= PORTA ================= */
+.porta{background:var(--obsidiana-3);border-top:1px solid var(--linha)}
+.porta-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start}
+.passos{list-style:none;display:grid;gap:14px;margin-top:30px}
+.passos li{display:grid;grid-template-columns:26px 1fr;gap:14px;color:var(--texto-2);font-size:15.5px;align-items:baseline}
+.passos .n{font-family:var(--fonte-titulo);color:var(--ambar);font-size:13px}
+.form{display:grid;gap:16px}
+.campo{display:grid;gap:7px}
+.campo label{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--texto-3);
+  font-family:var(--fonte-titulo)}
+.campo input,.campo select,.campo textarea{background:var(--obsidiana);border:1px solid var(--linha);
+  color:var(--texto);padding:14px 16px;font-family:var(--fonte-corpo);font-size:15.5px;
+  border-radius:2px;transition:border-color .2s ease;width:100%}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--ambar)}
+.campo textarea{resize:vertical;min-height:88px}
+.form-nota{font-size:13.5px;color:var(--texto-3);margin-top:4px}
+.form-ok{display:none;background:var(--ambar-suave);border:1px solid var(--ambar);
+  padding:24px;border-radius:2px}
+.form-ok h3{color:var(--ambar);margin-bottom:10px}
+.form-ok p{font-size:15px;color:var(--texto-2);margin-bottom:18px}
+
+/* ================= FAQ ================= */
+.faq{display:grid;margin-top:44px;border-top:1px solid var(--linha)}
+details{border-bottom:1px solid var(--linha)}
+summary{padding:24px 40px 24px 0;cursor:pointer;list-style:none;position:relative;
+  font-family:var(--fonte-titulo);font-size:clamp(16px,1.3vw,18px);font-weight:500;transition:color .2s ease}
+summary::-webkit-details-marker{display:none}
+summary:hover{color:var(--ambar)}
+summary::after{content:'+';position:absolute;right:4px;top:22px;color:var(--ambar);font-size:22px;
+  font-weight:300;transition:transform .25s ease}
+details[open] summary::after{transform:rotate(45deg)}
+details .resp{padding:0 40px 26px 0}
+details p{color:var(--texto-2);font-size:16px;margin-bottom:14px}
+details p:last-child{margin-bottom:0}
+.resp-rot{color:var(--ambar);font-family:var(--fonte-titulo);font-size:13px;
+  letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:5px}
+
+/* ================= MODAL DEPOIMENTO ================= */
+.modal{position:fixed;inset:0;background:rgba(6,6,9,.93);z-index:200;display:none;
+  place-items:center;padding:24px}
+.modal.on{display:grid}
+.modal-caixa{width:min(900px,100%);background:var(--obsidiana-2);border:1px solid var(--linha);
+  position:relative}
+.modal-video{width:100%;aspect-ratio:16/9;background:#000;display:grid;place-items:center;
+  color:var(--texto-3);font-family:var(--fonte-titulo);font-size:14px;letter-spacing:.14em;
+  text-align:center;padding:20px}
+.modal-legenda{padding:22px 26px;font-size:15px;color:var(--texto-2)}
+.modal-fechar{position:absolute;top:-44px;right:0;background:none;border:none;color:var(--texto-2);
+  font-size:30px;cursor:pointer;line-height:1}
+
+/* ================= RODAPÉ ================= */
+footer{padding:56px 0 44px;border-top:1px solid var(--linha);background:var(--obsidiana)}
+.rodape{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.rodape-nome{font-family:var(--fonte-titulo);font-size:15px;letter-spacing:.04em}
+.rodape-links{display:flex;gap:26px}
+.rodape-links a{color:var(--texto-3);text-decoration:none;font-size:14.5px;transition:color .2s ease}
+.rodape-links a:hover{color:var(--ambar)}
+.rodape-legal{color:var(--texto-3);font-size:13px;margin-top:26px}
+
+/* ================= REVELAÇÃO ================= */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rev.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width:820px){
+  .duas,.porta-grid{grid-template-columns:1fr;gap:44px}
+  .hero{min-height:auto;padding:130px 0 90px}
+  .etapa{grid-template-columns:48px 1fr;gap:16px}
+  .etapa-num{font-size:21px}
+  .scroll-dica{display:none}
+}
+
+/* ================= PAINEL DE TESTE (sai na versão final) ================= */
+.painel-teste{position:fixed;bottom:0;left:0;right:0;z-index:150;background:#101116;
+  border-top:1px solid var(--ambar);padding:12px 18px;display:flex;align-items:center;
+  gap:14px;flex-wrap:wrap;font-family:var(--fonte-titulo);font-size:12px}
+.painel-teste .rot{color:var(--ambar);letter-spacing:.12em;text-transform:uppercase}
+.painel-teste button{background:var(--obsidiana-3);border:1px solid var(--linha);color:var(--texto-2);
+  font-family:var(--fonte-corpo);font-size:12.5px;padding:7px 13px;border-radius:2px;cursor:pointer}
+.painel-teste button.ativo{border-color:var(--ambar);color:var(--ambar)}
+.painel-teste .fechar{margin-left:auto;background:none;border:none;color:var(--texto-3);cursor:pointer}
+@media (max-width:820px){.painel-teste{font-size:11px;padding:10px 12px}}
+</style>
+</head>
+<body>
+
+<!-- ============ 1 · HERO COM VÍDEO ============ -->
+<section class="hero">
+  <!-- QUANDO O VÍDEO EXISTIR: descomentar o <video> e apagar a div .hero-placeholder
+  <video class="hero-video" autoplay muted loop playsinline poster="video/depoimento-poster.jpg">
+    <source src="video/depoimento-neiva-loop.mp4" type="video/mp4">
+  </video>
+  -->
+  <div class="hero-placeholder"></div>
+  <div class="hero-veu"></div>
+
+  <div class="wrap">
+    <div class="hero-marca">André Tomaz</div>
+    <h1 id="hero-titulo">Primeiro eu entendo como a empresa funciona. Depois eu construo <em>o que ela precisa</em>.</h1>
+    <p class="hero-sub">Consultor de transformação empresarial com foco em processos, sistemas e inteligência artificial.</p>
+    <div class="hero-acoes">
+      <a href="#diagnostico" class="btn-fantasma">Começar pelo diagnóstico &nbsp;&rarr;</a>
+      <button class="play-depo" onclick="abrirDepo()">
+        <span class="play-icone"></span>
+        <span>Ver o depoimento de uma cliente</span>
+      </button>
+    </div>
+    <div class="scroll-dica">Role</div>
+  </div>
+</section>
+
+<!-- ============ 2 · O ESPELHO ============ -->
+<section class="espelho">
+  <div class="wrap rev">
+    <span class="olho">O problema</span>
+    <h2>Talvez você reconheça isso</h2>
+    <ul class="sintomas">
+      <li>A operação anda enquanto você está por perto. Quando você viaja, atrasa.</li>
+      <li>A equipe erra em coisas que você achava resolvidas: preço trocado, horário sobreposto, cliente sem retorno.</li>
+      <li>O cliente manda mensagem às 23h e você responde no dia seguinte, quando ele já procurou outro lugar.</li>
+      <li>A informação existe, mas está espalhada entre planilha, caderno, WhatsApp e a memória de duas pessoas.</li>
+      <li>Você já pensou em contratar mais alguém. E também já percebeu que mais gente, sem estrutura, é mais gente para gerenciar.</li>
+    </ul>
+    <p class="remate">O problema quase nunca é a equipe. É o desenho.</p>
+  </div>
+</section>
+
+<!-- ============ 3 · COMO EU TRABALHO ============ -->
+<section>
+  <div class="wrap rev">
+    <span class="olho">O trabalho</span>
+    <h2>O que eu faço</h2>
+    <p class="lead">Eu entro na empresa para entender como ela funciona hoje. Analiso operação, atendimento, processos e gestão. A partir disso desenho soluções que organizam o negócio e eliminam gargalos.</p>
+    <br>
+    <p class="lead">Em alguns casos isso vira um sistema próprio. Em outros, uma IA, automações ou uma nova estrutura de operação.</p>
+    <br>
+    <p class="lead"><strong>Cada empresa precisa de uma solução diferente.</strong></p>
+    <div class="contraste">
+      <p>Consultor tradicional entrega diagnóstico.</p>
+      <p>Software house entrega sistema.</p>
+      <p>Eu entrego a operação rodando.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · O MÉTODO ============ -->
+<section class="metodo">
+  <div class="wrap rev">
+    <span class="olho">O método</span>
+    <h2>Como funciona</h2>
+    <div class="etapas">
+      <div class="etapa destaque"><div class="etapa-num">0</div><div class="etapa-corpo">
+        <h3>Protocolo de marca</h3>
+        <p>Um diagnóstico on-line da sua operação e da sua presença digital. É por aqui que todo trabalho começa.</p></div></div>
+      <div class="etapa"><div class="etapa-num">1</div><div class="etapa-corpo">
+        <h3>Imersão</h3><p>Eu entro na empresa e observo como ela funciona de verdade.</p></div></div>
+      <div class="etapa"><div class="etapa-num">2</div><div class="etapa-corpo">
+        <h3>Diagnóstico</h3><p>Onde a empresa perde tempo, dinheiro e cliente.</p></div></div>
+      <div class="etapa"><div class="etapa-num">3</div><div class="etapa-corpo">
+        <h3>Arquitetura</h3><p>O desenho de como a operação deveria funcionar.</p></div></div>
+      <div class="etapa"><div class="etapa-num">4</div><div class="etapa-corpo">
+        <h3>Priorização</h3><p>O que gera mais impacto vem primeiro.</p></div></div>
+      <div class="etapa"><div class="etapa-num">5</div><div class="etapa-corpo">
+        <h3>Desenvolvimento</h3><p>A construção sob medida: sistema, IA, automações ou nova estrutura.</p></div></div>
+      <div class="etapa"><div class="etapa-num">6</div><div class="etapa-corpo">
+        <h3>Implantação</h3><p>Colocar para rodar na operação real, com a equipe usando e treinada.</p></div></div>
+      <div class="etapa"><div class="etapa-num">7</div><div class="etapa-corpo">
+        <h3>Acompanhamento</h3><p>Medir, ajustar e evoluir junto com o negócio.</p></div></div>
+    </div>
+    <p class="nota-metodo">As etapas 1, 2 e 3 acontecem antes de qualquer linha de código. É isso que separa uma solução sob medida de um sistema pronto.</p>
+  </div>
+</section>
+
+<!-- ============ 5 · O QUE SE CONSTRÓI ============ -->
+<section>
+  <div class="wrap rev">
+    <span class="olho">As entregas</span>
+    <h2>O que costuma nascer disso</h2>
+    <div class="grade">
+      <div class="card"><span class="card-marca">Gestão</span><h3>Painel de operação</h3>
+        <p>A operação inteira em uma tela: agenda, cadastro, preços por unidade, pacotes, histórico de quem fez o quê.</p></div>
+      <div class="card"><span class="card-marca">Atendimento</span><h3>Agente de IA</h3>
+        <p>Atende, agenda, qualifica e vende no WhatsApp, em vários idiomas, sem horário para começar ou terminar.</p></div>
+      <div class="card"><span class="card-marca">Escala</span><h3>Plataforma de conhecimento</h3>
+        <p>Quando o que a empresa sabe vira produto: curso, formação, comunidade.</p></div>
+      <div class="card"><span class="card-marca">Presença</span><h3>Site e conteúdo</h3>
+        <p>Atrai o cliente certo, sustenta o preço e fala a língua do mercado em que você atua.</p></div>
+      <div class="card"><span class="card-marca">Decisão</span><h3>Inteligência de dados</h3>
+        <p>Números em tempo real e alerta quando algo sai do planejado.</p></div>
+      <div class="card"><span class="card-marca">A regra</span><h3>Nada disso é pacote</h3>
+        <p>Nenhuma empresa recebe tudo. Cada uma recebe o que resolve o gargalo dela.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · O CASE ============ -->
+<section class="case">
+  <div class="wrap rev">
+    <span class="olho">Um caso real</span>
+    <span class="case-local">Instituto premium · Bélgica</span>
+    <h2 style="margin-bottom:14px">A fundadora era o limite do próprio negócio</h2>
+    <p class="case-antes">O atendimento, a agenda, o padrão da marca e a decisão de cada caso passavam por ela. O negócio crescia e ela virava o gargalo.</p>
+    <p class="lead">Entrei para entender a operação inteira antes de construir qualquer coisa. O que nasceu disso:</p>
+    <ul class="entregas">
+      <li><span class="marcador">01</span><span><strong>Um painel de gestão</strong><span class="d">Guia a recepção na ordem certa, cobra o preço certo por unidade e controla pacotes de sessão.</span></span></li>
+      <li><span class="marcador">02</span><span><strong>Uma atendente digital no WhatsApp</strong><span class="d">Agenda em quatro idiomas, 24 horas por dia, preenche a ficha de saúde antes da visita e registra por onde cada cliente chegou.</span></span></li>
+      <li><span class="marcador">03</span><span><strong>Uma plataforma própria de formação</strong><span class="d">Com uma agente comercial que conduz a matrícula do início ao fim.</span></span></li>
+      <li><span class="marcador">04</span><span><strong>Um site em quatro idiomas</strong><span class="d">Construído dentro das regras do setor de saúde na Bélgica.</span></span></li>
+    </ul>
+    <p class="case-fecho">Hoje a dona ajusta preço, tom de voz e regras do atendimento sozinha, sem programador.</p>
+  </div>
+</section>
+
+<!-- ============ 7 · PARA QUEM É ============ -->
+<section>
+  <div class="wrap rev">
+    <span class="olho">Antes de conversarmos</span>
+    <h2>Para quem é este trabalho</h2>
+    <div class="duas">
+      <div class="sim"><h3>Faz sentido se</h3><ul>
+        <li>Seu negócio já funciona e já tem demanda. O problema não é falta de cliente, é a operação não acompanhar.</li>
+        <li>A sua marca depende da sua presença e do seu nome.</li>
+        <li>Você atua em um mercado onde uma palavra errada tem consequência legal.</li>
+        <li>Você quer transformar o que sabe em produto, não só em atendimento.</li>
+      </ul></div>
+      <div class="nao"><h3>Não faz sentido se</h3><ul>
+        <li>Você procura tráfego pago, posts ou gestão de redes sociais. Isso é outro serviço, com outro profissional.</li>
+        <li>Você quer o mais barato. Sob medida não compete com pacote pronto.</li>
+        <li>Você quer entregar o problema e não participar. As três primeiras etapas exigem você dentro.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 · A PORTA ============ -->
+<section class="porta" id="diagnostico">
+  <div class="wrap rev">
+    <div class="porta-grid">
+      <div>
+        <span class="olho">O próximo passo</span>
+        <h2>Comece pelo diagnóstico</h2>
+        <p class="lead">Antes de qualquer proposta, eu faço uma leitura da sua operação e da sua presença digital. Você recebe um retrato honesto de onde a empresa está e onde ela perde.</p>
+        <ul class="passos">
+          <li><span class="n">01</span><span>Você preenche os quatro campos ao lado.</span></li>
+          <li><span class="n">02</span><span>A conversa abre direto no meu WhatsApp, já com o seu contexto.</span></li>
+          <li><span class="n">03</span><span>Eu leio antes de responder e volto com as primeiras perguntas.</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <form class="form" id="form-diag">
+          <div class="campo"><label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" required autocomplete="name"></div>
+          <div class="campo"><label for="empresa">Empresa</label>
+            <input id="empresa" name="empresa" type="text" required autocomplete="organization"></div>
+          <div class="campo"><label for="setor">Setor</label>
+            <select id="setor" name="setor" required>
+              <option value="">Selecione</option>
+              <option>Estética e saúde</option>
+              <option>Moda e varejo</option>
+              <option>Serviços profissionais</option>
+              <option>Educação e formação</option>
+              <option>Outro</option>
+            </select></div>
+          <div class="campo"><label for="gargalo">Qual o maior gargalo hoje</label>
+            <textarea id="gargalo" name="gargalo" required></textarea></div>
+          <button type="submit" class="btn">Solicitar o diagnóstico &nbsp;&rarr;</button>
+          <p class="form-nota">Respondo pessoalmente. Não existe equipe de vendas do outro lado.</p>
+        </form>
+
+        <div class="form-ok" id="form-ok">
+          <h3>Recebido</h3>
+          <p>Seus dados foram registrados. Agora é só abrir a conversa: o WhatsApp já vai com o seu contexto escrito, você só envia.</p>
+          <a class="btn" id="link-whats" href="#" target="_blank" rel="noopener">Abrir a conversa no WhatsApp &nbsp;&rarr;</a>
+          <p class="form-nota" id="nota-fallback"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9 · PERGUNTAS ============ -->
+<section>
+  <div class="wrap rev">
+    <span class="olho">Perguntas</span>
+    <h2>O que costumam me perguntar</h2>
+    <div class="faq">
+      <details>
+        <summary>Quanto tempo leva?</summary>
+        <div class="resp"><p>Depende do tamanho do gargalo. O diagnóstico é rápido. A construção é definida na etapa de priorização, com prazo fechado antes de começar.</p></div>
+      </details>
+
+      <details>
+        <summary>Eu vou ficar dependente de você?</summary>
+        <div class="resp">
+          <p><span class="resp-rot">Para operar, não</span>Tudo que eu construo vem com um painel onde você mesmo edita o que muda no dia a dia: preço, texto, horário, regra de atendimento, tom de voz do agente. Eu entrego isso explicado de forma simples, com a sua equipe treinada, para ninguém precisar me chamar por causa de uma vírgula.</p>
+          <p><span class="resp-rot">Para existir, sim, e isso é normal</span>Software não é obra que fica pronta e some. Existe servidor, atualização, segurança e evolução. Isso é uma mensalidade clara, combinada antes de começar, sem letra miúda. Se um dia você quiser levar a operação para outro lugar, os seus dados são seus.</p>
+          <p>A diferença está aí: você não fica refém de mim para trabalhar. Você paga pela estrutura que continua no ar.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Já tenho um sistema. Serve?</summary>
+        <div class="resp"><p>Ótimo. Muitas vezes o problema não é o sistema, é o desenho em volta dele. O diagnóstico mostra se vale integrar, corrigir ou substituir.</p></div>
+      </details>
+
+      <details>
+        <summary>Minha empresa é pequena demais?</summary>
+        <div class="resp"><p>Se você é o gargalo, o tamanho não importa. O que importa é se a operação já tem repetição suficiente para ser estruturada.</p></div>
+      </details>
+
+      <details>
+        <summary>E os meus dados?</summary>
+        <div class="resp"><p>Estrutura de acesso, separação de ambiente e as regras do seu setor entram no desenho desde a primeira etapa, não como remendo no fim.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RODAPÉ ============ -->
+<footer>
+  <div class="wrap">
+    <div class="rodape">
+      <div class="rodape-nome">André Tomaz</div>
+      <div class="rodape-links">
+        <a href="#diagnostico">Diagnóstico</a>
+        <a href="https://www.instagram.com/andretomazsd/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <p class="rodape-legal">Consultor de transformação empresarial · Processos, sistemas e inteligência artificial</p>
+  </div>
+</footer>
+
+<!-- ============ MODAL DO DEPOIMENTO ============ -->
+<div class="modal" id="modal-depo" onclick="if(event.target===this)fecharDepo()">
+  <div class="modal-caixa">
+    <button class="modal-fechar" onclick="fecharDepo()">&times;</button>
+    <div class="modal-video">DEPOIMENTO COMPLETO<br><span style="font-size:11px;opacity:.6">Entra aqui quando gravado, com som</span></div>
+    <p class="modal-legenda">Depoimento da fundadora do instituto na Bélgica sobre a transformação da operação.</p>
+  </div>
+</div>
+
+<!-- ============ PAINEL DE TESTE (sai na versão final) ============ -->
+<div class="painel-teste" id="painel">
+  <span class="rot">Teste de hero</span>
+  <button class="ativo" onclick="trocarHero(0,this)">Frase 1</button>
+  <button onclick="trocarHero(1,this)">Frase 2</button>
+  <button onclick="trocarHero(2,this)">Frase 3</button>
+  <button onclick="trocarHero(3,this)">Frase 4</button>
+  <button class="fechar" onclick="document.getElementById('painel').style.display='none'">ocultar &times;</button>
+</div>
+
+<script>
+/* ====== CONFIG (na produção vai para arquivo separado) ====== */
+const CFG = {
+  whatsapp: '5511975956901'
+};
+
+/* ====== Revelação ao rolar ====== */
+const alvos=document.querySelectorAll('.rev');
+if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target)}})},
+  {threshold:.12,rootMargin:'0px 0px -60px 0px'});
+  alvos.forEach(a=>obs.observe(a));
+}else{alvos.forEach(a=>a.classList.add('on'))}
+
+/* ====== Formulário: capta o lead e encaminha ao WhatsApp ====== */
+document.getElementById('form-diag').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  const d = {
+    nome: document.getElementById('nome').value.trim(),
+    empresa: document.getElementById('empresa').value.trim(),
+    setor: document.getElementById('setor').value,
+    gargalo: document.getElementById('gargalo').value.trim(),
+    origem: document.referrer || 'direto',
+    quando: new Date().toISOString()
+  };
+
+  /* 1. CAPTA O LEAD
+     No protótipo só guarda no navegador e mostra no console.
+     Na produção: envia para o seu e-mail / planilha / CRM antes de abrir o WhatsApp,
+     para o lead ficar registrado mesmo se a pessoa não completar a conversa. */
+  try{
+    const base = JSON.parse(localStorage.getItem('leads_at') || '[]');
+    base.push(d); localStorage.setItem('leads_at', JSON.stringify(base));
+  }catch(e){}
+  console.log('LEAD CAPTADO:', d);
+
+  /* 2. MONTA A CONVERSA JÁ COM CONTEXTO */
+  const msg =
+    'Olá André, sou ' + d.nome + ', da ' + d.empresa + ' (' + d.setor + ').\n\n' +
+    'Pedi o diagnóstico pelo seu site.\n\n' +
+    'O maior gargalo hoje: ' + d.gargalo;
+  const url = 'https://wa.me/' + CFG.whatsapp + '?text=' + encodeURIComponent(msg);
+
+  /* 3. MOSTRA A CONFIRMAÇÃO E ABRE A CONVERSA */
+  document.getElementById('form-diag').style.display = 'none';
+  const ok = document.getElementById('form-ok');
+  ok.style.display = 'block';
+  document.getElementById('link-whats').href = url;
+  document.getElementById('nota-fallback').textContent =
+    'Se a janela não abrir sozinha, use o botão acima.';
+  ok.scrollIntoView({behavior:'smooth', block:'center'});
+  window.open(url, '_blank');
+});
+
+/* ====== Modal do depoimento ====== */
+function abrirDepo(){document.getElementById('modal-depo').classList.add('on');document.body.style.overflow='hidden'}
+function fecharDepo(){document.getElementById('modal-depo').classList.remove('on');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')fecharDepo()});
+
+/* ====== Painel de teste do hero ====== */
+const HEROS = [
+  'Primeiro eu entendo como a empresa funciona. Depois eu construo <em>o que ela precisa</em>.',
+  'A sua empresa <em>continua funcionando</em> quando você não está?',
+  'Eu organizo a operação de empresas que <em>cresceram mais rápido que a própria estrutura</em>.',
+  'Você não precisa de mais gente. Precisa de <em>uma operação que se sustenta</em>.'
+];
+function trocarHero(i, btn){
+  document.getElementById('hero-titulo').innerHTML = HEROS[i];
+  document.querySelectorAll('.painel-teste button').forEach(b=>b.classList.remove('ativo'));
+  btn.classList.add('ativo');
+}
+</script>
+
+</body>
+</html>

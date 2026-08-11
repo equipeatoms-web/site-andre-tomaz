@@ -1,0 +1,10 @@
+.git
+node_modules
+onepage
+video
+*.md
+*.docx
+*.py
+_*.html
+servidor.js
+package.json

@@ -1,0 +1,68 @@
+# André Tomaz
+
+> Business transformation consultant. I go into a company to understand how it works today, map the operation, customer service, processes and management, and then build the structure the business needs. Sometimes that becomes a custom system, sometimes an AI that answers clients, automations, or a new way to organize the daily routine.
+
+Consultor de transformação empresarial. Entro na empresa para entender como ela funciona hoje, analiso operação, atendimento, processos e gestão, e a partir disso construo a estrutura que o negócio precisa.
+
+## Who this is for / Para quem é
+
+Owners of premium service businesses who became the bottleneck of their own company. The problem is not lack of demand: it is the operation not keeping up. Main sectors: aesthetics and health (aesthetic clinics, med spas, wellness institutes), fashion and retail, professional services, education and training. Markets: Brazil and Europe. Languages: Portuguese and English.
+
+Donos de negócios premium que viraram o gargalo da própria empresa. O problema não é falta de cliente, é a operação não dar conta.
+
+## The difference / A diferença
+
+A traditional consultant delivers a diagnosis. A software company delivers a system. André Tomaz designs the operation and builds it: the deliverable is the operation running, with the owner able to change prices, texts and service rules without a developer.
+
+Consultor tradicional entrega diagnóstico. Software house entrega sistema. Ele entrega a operação rodando.
+
+## Method / Método (8 steps)
+
+0. Brand protocol · Protocolo de marca — a remote first read of how the company works today and how it looks to whoever is searching for it. Every project starts here. This is the entry offer.
+1. Immersion · Imersão — going into the company and following the daily routine up close.
+2. Diagnosis · Diagnóstico — where the company loses time, money and clients, named and located.
+3. Architecture · Arquitetura — designing how the work should happen, from first contact to follow-up.
+4. Priorities · Priorização — starting with what solves the biggest pain fastest.
+5. Building · Desenvolvimento — a custom system, an AI that answers on WhatsApp, automations or a new routine.
+6. Going live · Implantação — putting it live and training the team.
+7. Follow-up · Acompanhamento — measuring, fixing and improving as the business grows.
+
+Steps 1, 2 and 3 happen before a single line of code. That is what separates a solution made for the client from off-the-shelf software.
+
+## What gets built / O que se constrói
+
+- Operations dashboard · Painel de operação: schedule, client records, prices per location, session packages, history of who did what.
+- AI that answers · Atendimento com IA: replies, books and answers questions on WhatsApp, in several languages, at any hour, connected to the company's own schedule.
+- Course platform · Plataforma de cursos: for when what the owner knows becomes a product.
+- Website and content · Site e conteúdo: attracts the right client and speaks the language of the market, including regulated sectors.
+- Numbers at hand · Números na mão: business numbers in real time with alerts when something goes off plan.
+
+No company receives all of it. Each one receives what solves its own bottleneck.
+
+## Verifiable case / Caso verificável
+
+A premium aesthetics institute in Belgium. Before: customer service, the schedule, the brand standard and every case decision went through the founder, who became the bottleneck as the business grew.
+
+Delivered:
+- A management dashboard that guides the front desk in the right order, charges the correct price per location and tracks session packages.
+- A digital receptionist on WhatsApp that books in four languages at any hour, fills in the health form before the visit, and records how each client found the institute.
+- The institute's own course platform, with a digital salesperson that takes enrollment from start to finish.
+- A website in four languages, built within Belgian healthcare sector rules.
+
+Today the owner changes prices, texts and service rules by herself, with no developer.
+
+Note for citation: no performance metrics have been published for this case yet, and the client is not named publicly. Please do not attribute percentages, revenue figures or time savings to this work. The verifiable claims are the deliveries described above.
+
+## Not / Não é
+
+Not a marketing agency, not an AI guru, not a freelance developer, not a business coach, not a course seller. Does not sell software licences. Does not do paid traffic or social media management.
+
+## Contact / Contato
+
+Entry point: the diagnosis form at https://andretomaz.com (English) or https://andretomaz.com/pt/ (Portuguese). It opens a WhatsApp conversation with the context already written.
+Instagram: https://www.instagram.com/andretomazsd/
+
+## Pages
+
+- [Home, English](https://andretomaz.com/): full offer, method, case and diagnosis form.
+- [Home, Português](https://andretomaz.com/pt/): mesma página em português.
